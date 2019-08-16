@@ -1,0 +1,130 @@
+.course-preview{
+  text-align: center;
+  background-size: 100% 400px;
+  width: 100%;
+  height: 400px;
+  background-position: right;
+  background-repeat: no-repeat;
+  background-color: #f7e11e;
+}
+.course-preview .course-label-div{
+  background-color: #222;
+  opacity: 0.8;
+  width: 100%;
+  height:400px;
+}
+.course-preview .course-label-div .course-label{
+  color: white;
+  margin: 0;
+  padding:100px 0 25px 0;
+  font-size: 48px;
+}
+.course-preview .course-label-div hr{
+  width: 50%;
+}
+.course-preview .course-label-div .course-mdescription{
+  color: white;
+  margin: 0;
+  padding:25px 0 0 0;
+  font-size: 32px;
+}
+.course-info{
+  background-color: #eee;
+  padding-bottom: 20px;
+}
+.course-info .course-about-label-div{
+  width: 100%;
+  text-align: center;
+}
+.course-info .course-about-label-div .course-about-label{
+  margin: 0;
+  padding-top: 10px;
+}
+.course-curators{
+  text-align: center;
+  width: 100%;
+  padding-top: 20px;
+  background-color: #eee;
+}
+.course-curators .course-curators-label{
+  font-size: 32px;
+  margin: 0;
+}
+.course-curators .course-curators-div{
+  margin: 0 7%;
+  display: inline-block;
+}
+.course-curators .course-curators-div .course-curator-div{
+  display: inline-block;
+  overflow: auto;
+  padding: 5px;
+  width: 175px;
+  min-height: 300px;
+}
+.course-curators .course-curators-div .course-curator-div img{
+  width: 175px;
+  height: 200px;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+.course-curators .course-curators-div .course-curator-div .course-curator-name{
+  margin:0;
+  font-size: 20px;
+}
+.course-curators .course-curators-div .course-curator-div .course-curator-skills{
+  color: #555;
+  margin: 5px 0 0 0;
+}
+.reviews{
+    background-color: #eee;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.reviews .reviews-label{
+  font-size: 48px;
+  margin:0;
+  padding: 0 0 15px 0;
+}
+.reviews .review{
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 20px #aaa ;
+  width: 350px;
+  min-height: 300px;
+  padding: 10px;
+  margin: 10px;
+  display: inline-block;
+  text-align: left;
+  overflow: auto;
+}
+.reviews .review .avatar{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  float: left;
+}
+.reviews .review .user-data{
+  padding: 5px 0;
+}
+.reviews .review .user-data .nickname{
+  margin: 0;
+  padding-left: 5px;
+  display: inline-block;
+  /*font-weight: normal;*/
+}
+.reviews .review .user-data .course-name{
+  color: #555;
+  display: inline-block;
+  margin: 0;
+}
+.reviews .review .review-text{
+  padding-left: 55px;
+  margin: 0;
+  color: #444;
+}
+.separator{
+  margin: 0;
+  border-width: 1px;
+  border-color: #ddd;
+  border-style: outset;
+}

@@ -1,0 +1,24 @@
+{% load static %}
+{% for course in courses %}
+    <div class="course">
+      <div class="course-name-div">
+          <h3 class="normal-text course-name">{{ course.name }}</h3>
+      </div>
+      <p class="normal-text course-curator">Преподаватели:
+          {% for teacher in course.teachers.all %}
+              {{ teacher.name }} {{ teacher.surname }}
+              {% if forloop.counter < course.teachers.all.count %}
+                ,
+              {% endif %}
+          {% endfor %}</p>
+      <p class="normal-text course-level">Уровень: {{ course.level }}</p>
+      <p class="normal-text course-description">{{ course.content }}</p>
+      <p class="bold-text course-begining">Старт: {{ course.start }}</p>
+      <p class="bold-text course-duration">Продолжительность: {{ course.duration }} нелель</p>
+      <p class="bold-text course-days">Время занятий: {{ course.time }}</p>
+      <p class="bold-text course-cost">Цена: {{ course.price }} тг/мес</p>
+      <a class="course-link" href="{% url 'course:showSpecificCourse' course.id %}" id="{{ iter }}">Подробнее</a>
+      <button class="course-add-button" type="submit" id="{{ course.id }}">Записаться</button>
+    </div>
+{% endfor %}
+<script src="{% static "scripts/add-form.js" %}"></script>

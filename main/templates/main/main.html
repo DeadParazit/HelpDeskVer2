@@ -1,0 +1,204 @@
+{% load static %}
+{% load course_filter %}
+<div class="flash-movie" style="background-image: url(' {% static "images/Code.gif" %} ')">
+  <button class="skip">ПРОПУСТИТЬ</button>
+</div>
+<html>
+<head>
+<title>Home</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+<link rel="stylesheet" type="text/css" href="{% static "css/standart.css" %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+{% if first_visit %}
+    <script src="{% static "scripts/flash-movie.js" %}"></script>
+{% endif %}
+
+<script src="{% static "scripts/write-num.js" %}"></script>
+<script src="{% static "scripts/add-form.js" %}"></script>
+</head>
+<body>
+<header>
+  <nav id="navbarPlace">
+      {% include "main/templates/navigation.html" %}
+  </nav>
+</header>
+<main>
+<div class="contact-us" style="background-image: url(' {% static "images/Code.gif" %} ')">
+  <div class="contact-us-form">
+    <form class="" action="contact/" method="post">
+      {% csrf_token %}
+      <h4>Запись на консультацию</h4>
+      <input class="contact-data input-field" name="name" type="text" placeholder="Имя">
+      <input class="contact-data input-field tel-num" name="phone" type="tel" placeholder="Номер">
+      <input class="contact-data input-field" name="email" type="email" placeholder="Е-mail">
+      <button name="button" class="submit-button buttons">Записаться</button>
+    </form>
+  </div>
+</div>
+<div class="course-add">
+  <div class="course-add-background">
+      <div class="course-add-form-background">
+
+      </div>
+  </div>
+  <div class="course-add-background1">
+    <div class="course-add-form">
+      <img src="{% static "images/x-button.jpg" %}" alt="x" class="close-form">
+      <form class="" action="enrolment/" method="post">
+        {% csrf_token %}
+        <input type="text" class="add-input input-field" name="name" placeholder="Имя">
+        <input type="text" class="add-input input-field tel-num" name="phone" placeholder="Номер">
+        <input type="text" class="add-input input-field" name="email" placeholder="E-mail">
+        <select class="course-add-select input-field" name="course_id">
+            {% for course in all_courses %}
+              <option value="{{ course.id }}" >{{ course.name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="submit-button buttons">Записаться</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="courses" name="courses">
+      <div id="courses"></div>
+      <div class="courses-div">
+        <h1 class="courses-label">Курсы:</h1>
+      </div>
+      <div class="courses-row" id="courses-row">
+        {% for course in main_courses %}
+            <div class="course">
+              <div class="course-name-div">
+                  <h3 class="normal-text course-name">{{ course.name }}</h3>
+              </div>
+              <p class="normal-text course-curator">Преподаватели:
+                  {% for teacher in course.teachers.all %}
+                      {{ teacher.name }} {{ teacher.surname }}
+                      {% if forloop.counter < course.teachers.all.count %}
+                        ,
+                      {% endif %}
+                  {% endfor %}</p>
+              <p class="normal-text course-level">Уровень: {{ course.level }}</p>
+              <p class="normal-text course-description">{{ course.content }}</p>
+              <p class="bold-text course-begining">Старт: {{ course.start }}</p>
+              <p class="bold-text course-duration">Продолжительность: {{ course.duration }} нелель</p>
+              <p class="bold-text course-days">Время занятий: {{ course.time }}</p>
+              <p class="bold-text course-cost">Цена: {{ course.price }} тг/мес</p>
+              <a class="course-link" href="{% url 'course:showSpecificCourse' course.id %}">Подробнее</a>
+              <button class="course-add-button" type="submit" id="{{ course.id }}">Записаться</button>
+            </div>
+        {% endfor %}
+      </div>
+      <div class="courses-link-div">
+        <button class="courses-link">Показать ещё</button>
+      </div>
+        <script type="text/javascript">
+            $('.courses-link').click(function () {
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "{% url 'main:show' %}",
+                        data: {
+                            last_id: $('.course').last().find('.course-add-button').attr('id'),
+                            number_of_courses: $('.course').length,
+                        },
+                        success: function (data) {
+                           $('#courses-row').html($('#courses-row').html() + data);
+                        }
+                    })
+            });
+        </script>
+</div>
+
+<div class="about">
+  <div id="about"></div>   
+  <div class="about-div">
+    <h1 class="about-label">О нас:</h1>
+  </div>
+  <div class="course-curators">
+    <h1 class="course-curators-label">Преподаватели:</h1>
+    <div class="course-curators-div">
+      {% for teacher in all_teachers %}
+          <div class="course-curator-div">
+            <img src="{{ teacher.image.url }}" alt="{{ teacher.name }}">
+            <h1 class="course-curator-name">{{ teacher.name }} {{ teacher.surname }}</h1>
+            <p class="course-curator-skills">{{ teacher.tags }}</p>
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="partners-background">
+  <div class="partners">
+    <div class="partners-div">
+      <h1 class="partners-label">Партнеры:</h1>
+      <div class="partner-div">
+          <img src="{% static "images/reaper.jpg" %}" alt="partner1" class="partner"></img>
+      </div>
+      <div class="partner-div">
+          <img src="{% static "images/reaper.jpg" %}" alt="partner2" class="partner"></img>
+      </div>
+      <div class="partner-div">
+          <img src="{% static "images/reaper.jpg" %}" alt="partner3" class="partner"></img>
+      </div>
+      <div class="partner-div">
+          <img src="{% static "images/reaper.jpg" %}" alt="partner4" class="partner"></img>
+      </div>
+    </div>
+  </div>
+</div>
+{#<div class="reviews">#}
+{#  <h1 class="reviews-label">Отзывы:</h1>#}
+{#  <div class="review">#}
+{#    <img src="x" alt="avatar" class="avatar">#}
+{#    <div class="user-data">#}
+{#      <h1 class="nickname">Name1</h1>#}
+{#      <p class="course-name">/JavaScript</p>#}
+{#    </div>#}
+{#    <p class="review-text">Text1</p>#}
+{#  </div>#}
+{#  <div class="review">#}
+{#    <img src="x" alt="avatar" class="avatar">#}
+{#    <div class="user-data">#}
+{#      <h1 class="nickname">Name2</h1>#}
+{#      <p class="course-name">/C#</p>#}
+{#    </div>#}
+{#    <p class="review-text">Text2</p>#}
+{#  </div>#}
+{#  <div class="review">#}
+{#    <img src="x" alt="avatar" class="avatar">#}
+{#    <div class="user-data">#}
+{#      <h1 class="nickname">Name3</h1>#}
+{#      <p class="course-name">/Unity</p>#}
+{#    </div>#}
+{#    <p class="review-text">Text3</p>#}
+{#  </div>#}
+{#</div>#}
+</main>
+<footer>
+  <div>
+  <a class="dg-widget-link" href="http://2gis.kz/almaty/firm/9429940000793107/center/76.90987586975099,43.23558928211451/zoom/16?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">
+    Посмотреть на карте Алматы
+  </a>
+  <div class="dg-widget-link">
+    <a href="http://2gis.kz/almaty/firm/9429940000793107/photos/9429940000793107/center/76.90987586975099,43.23558928211451/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos">
+      Фотографии компании
+    </a>
+  </div>
+  <div class="dg-widget-link">
+    <a href="http://2gis.kz/almaty/center/76.909876,43.235296/zoom/16/routeTab/rsType/bus/to/76.909876,43.235296╎Международный университет информационных технологий?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">\
+      Найти проезд до Международный университет информационных технологий
+    </a>
+  </div>
+  <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+  <script charset="utf-8" src="{% static "scripts/Map.js" %}"></script>
+  </div>
+  <div id="footerPlace">
+      {% include "main/templates/footer.html" %}
+  </div>
+</footer>
+</body>
+</html>

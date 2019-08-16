@@ -1,0 +1,37 @@
+.footer-fixed {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #222223;
+   color: white;
+   text-align: center;
+}
+.footer-normal{
+  position:relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #222223;
+  color: white;
+  text-align: center;
+}
+.contacts{
+  display:inline-block;
+  padding: 0px 20px 0px 20px;
+  margin:5px;
+  text-align: left;
+}
+.copyright{
+  padding: 5px 0px 5px 0px;
+}
+.contacts p{
+  color:#aaa;
+  margin:0px 0px 2px 0px;
+}
+.contacts h3{
+  margin:0px 0px 2px 0px;
+}
+.footer-normal hr{
+  border-color: #ddd;
+}

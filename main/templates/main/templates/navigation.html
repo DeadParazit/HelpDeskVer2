@@ -1,0 +1,25 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/navbar.css" %}">
+<!-- <script src="scripts/StickyNav.js"></script> -->
+<div id="navbar" class="sticky">
+  <a href="{% url 'main:main' %}" class="links" id="logo"><img src="{% static "images/SkyCode.png" %}"></a>
+  <!-- <div class="link-div">
+    <a href="main.html" class="links" id="one">Home</a>
+  </div> -->
+  <div class="links-div">
+    <div class="link-div">
+      <a href="{% url 'news:news' %}" class="links" id="one">Новости</a>
+    </div>
+    <div class="link-div courses-dropdown">
+      <a href="{% url 'main:main' %}#courses" class="links">Курсы</a>
+      <div class="courses-dropdown-content">
+        {% for course in all_courses %}
+          <a href="{% url 'course:showSpecificCourse' course.id %}">{{ course.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="link-div">
+      <a href="{% url 'main:main' %}#about" class="links">О нас</a>
+    </div>
+  </div>
+</div>
