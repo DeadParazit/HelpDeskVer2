@@ -4,7 +4,7 @@ from django.template import loader
 from django.template.loader import render_to_string
 from main.models import Request
 
-#Основная страница
+#Main page
 def main(request):
     all_requests = Request.objects.all()
     context = {
