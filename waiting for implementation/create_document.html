@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Document Page</title>
+    <link rel="stylesheet" href="{% static "css/standart.css" %}">
+    <link rel="stylesheet" href="{% static "css/document.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="{% static "scripts/toggle_lists.js" %}"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navigation">
+        <div id="navigation">
+            {% include "main/templates/navigation.html" %}
+        </div>
+        <div id="navigation_content" class="dynamic_navigation">
+            {% include "main/templates/document_navigation.html" %}
+        </div>
+      </nav>
+      <script type="text/javascript">
+      $(document).ready(function() {
+        $('main').css("height",$( window ).height()-40);
+        $('.content').css("width",$( window ).width()-247);
+        $( window ).resize(function() {
+          $('main').css("height",$( window ).height()-40);
+          $('.content').css("width",$( window ).width()-247);
+        });
+      });
+      </script>
+    </header>
+    <main>
+      <div class="relative_map">
+        <div class="filter">
+          <div class="multiple_options_name_div" id="1">
+            <i class="arrow right" id="arrow1"></i>
+            <p class="multiple_options_name">Заявлено</p>
+          </div>
+          <div class="multiple_options_div hidden" id="list1">
+            <div class="multiple_options_name_div" id="11">
+              <i class="arrow right" id="arrow11"></i>
+              <p class="multiple_options_name">Заявитель</p>
+            </div>
+            <div class="multiple_options_div hidden" id="list11">
+              <div class="option_div">
+                <p class="option">Заявитель</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Подразделение</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Телефон</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Кабанет</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Местоположение</p>
+              </div>
+            </div>
+            <div class="multiple_options_name_div" id="12">
+              <i class="arrow right" id="arrow12"></i>
+              <p class="multiple_options_name">Тип заявки</p>
+            </div>
+            <div class="multiple_options_div hidden" id="list12">
+              <div class="option_div">
+                <p class="option">Способ обращения</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Тип заявки</p>
+              </div>
+            </div>
+            <div class="multiple_options_name_div" id="13">
+              <i class="arrow right" id="arrow13"></i>
+              <p class="multiple_options_name">Заявление</p>
+            </div>
+            <div class="multiple_options_div hidden" id="list13">
+              <div class="option_div">
+                <p class="option">Тип заявления</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Приоритет</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Описание</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Вложения</p>
+              </div>
+            </div>
+            <div class="multiple_options_name_div" id="14">
+              <i class="arrow right" id="arrow14"></i>
+              <p class="multiple_options_name">Статус</p>
+            </div>
+            <div class="multiple_options_div hidden" id="list14">
+              <div class="option_div">
+                <p class="option">Заявитель оповещен</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Исполнитель оповещен</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Оператор оповещен</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Смена статуса</p>
+              </div>
+            </div>
+          </div>
+          <div class="multiple_options_name_div" id="2">
+            <i class="arrow right" id="arrow1"></i>
+            <p class="multiple_options_name">Исполнение</p>
+          </div>
+          <div class="multiple_options_div hidden" id="list2">
+            <div class="option_div">
+              <p class="option">Оп1</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Оп2</p>
+            </div>
+          </div>
+          <div class="multiple_options_name_div" id="3">
+            <i class="arrow right" id="arrow3"></i>
+            <p class="multiple_options_name">Качество</p>
+          </div>
+          <div class="multiple_options_div hidden" id="list3">
+            <div class="option_div">
+              <p class="option">Оп1</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Оп2</p>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

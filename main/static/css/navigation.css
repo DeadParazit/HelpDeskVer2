@@ -33,7 +33,7 @@
   margin: 0;
 }
 .link_div{
-  width: 100px;
+  min-width: 100px;
   padding: 10px;
   font-size: 17px;
   text-align: center;
