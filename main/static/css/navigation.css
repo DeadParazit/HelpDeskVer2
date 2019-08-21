@@ -46,6 +46,7 @@
 .link_div:hover{
   background-color: #888;
   box-shadow: 0 0 8px #000 inset;
+  cursor: pointer;
 }
 .link{
   color:#eee;

@@ -1,0 +1,21 @@
+category_div{
+    padding: 15px;
+    border: 1px solid #aaa;
+    box-shadow: 0 0 5px #555;
+    border-radius: 10px;
+}
+category_left_side_div{
+    display: inline-block;
+}
+category_right_side_div{
+    display: inline-block;
+}
+variable_name{
+    margin: 0;
+    padding: 3px 0 3px 3px;
+    font-weight: bold;
+}
+variable_data{
+    margin: 0;
+    padding: 3px 3px 3px 0;
+}

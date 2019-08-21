@@ -16,7 +16,7 @@
             {% include "../main/templates/navigation.html" %}
         </div>
         <div id="navigation_content" class="dynamic_navigation">
-            {% include "Request/templates/create_document.html" %}
+            {% include "Request/templates/document_navigation.html" %}
         </div>
       </nav>
       <script type="text/javascript">
@@ -114,10 +114,25 @@
           </div>
           <div class="multiple_options_div hidden" id="list2">
             <div class="option_div">
-              <p class="option">Оп1</p>
+                <p class="option">Исполнитель</p>
             </div>
-            <div class="option_div">
-              <p class="option">Оп2</p>
+            <div class="multiple_options_name_div" id="21">
+              <i class="arrow right" id="arrow21"></i>
+              <p class="multiple_options_name">Эсклация</p>
+            </div>
+            <div class="multiple_options_div hidden" id="list21">
+              <div class="option_div">
+                <p class="option">Заявитель оповещен</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Исполнитель оповещен</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Оператор оповещен</p>
+              </div>
+              <div class="option_div">
+                <p class="option">Смена статуса</p>
+              </div>
             </div>
           </div>
           <div class="multiple_options_name_div" id="3">
@@ -134,7 +149,23 @@
           </div>
         </div>
         <div class="content">
-
+           {% include "Request/templates/applicant_page.html" %}
+            <form>
+    <link rel="stylesheet" href="{% static "css/document_basics.css" %}">
+    <link rel="stylesheet" href="{% static "css/applicant_page.css" %}">
+    <div class="category_div request_data">
+        <div class="category_left_side_div">
+            <p class="variable_name">Номер заявки:</p>
+            <p class="variable_name">Дата регистрации:</p>
+            <p class="variable_name">Адрес:</p>
+        </div>
+        <div class="category_right_side_div">
+            <p class="variable_data">-</p>
+            <p class="variable_data">-</p>
+            <p class="variable_data">Name Surname</p>
+        </div>
+    </div>
+</form>
         </div>
       </div>
     </main>
