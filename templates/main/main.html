@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{% static "css/standart.css" %}">
+    <link rel="stylesheet" href="{% static "css/main.css" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="{% static "scripts/toggle_lists.js" %}"></script>
+    <script src="{% static "scripts/functions.js" %}"></script>
+    <script src="{% static "scripts/filter.js" %}"></script>
+
+  </head>
+  <body>
+    <header>
+      <nav class="navigation">
+        <div id="navigation">
+          {% include "main/templates/navigation.html" %}
+        </div>
+        <div id="navigation_content" class="dynamic_navigation">
+          {% include "main/templates/main_navigation.html" %}
+        </div>
+      </nav>
+      <script type="text/javascript">
+      $(document).ready(function() {
+        basic_form();
+        $('main').css("height",$( window ).height()-40);
+        $('.content').css("width",$( window ).width()-247);
+        $( window ).resize(function() {
+          $('main').css("height",$( window ).height()-40);
+          $('.content').css("width",$( window ).width()-247);
+        });
+      });
+      </script>
+    </header>
+    <main>
+      <div class="relative_map">
+        <div class="filter">
+          <div class="option_div" onclick="basic_form()">
+            <p class="option">Общие</p>
+          </div>
+          <div class="option_div">
+            <p class="option" id="col8">По исполнителю</p>
+          </div>
+          <div class="option_div">
+            <p class="option" id="col5">По заявителю</p>
+          </div>
+          <div class="multiple_options_name_div" id="1">
+            <i class="arrow right" id="arrow1"></i>
+            <p class="multiple_options_name" id="col3">По дате</p>
+          </div>
+          <div class="multiple_options_div hidden" id="list1">
+            <div class="option_div">
+              <p class="option">Оп1</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Оп2</p>
+            </div>
+          </div>
+          <div class="multiple_options_name_div" id="2">
+            <i class="arrow right" id="arrow2"></i>
+            <p class="multiple_options_name" id="col2">Исполнение</p>
+          </div>
+          <div class="multiple_options_div hidden" id="list2">
+            <div class="option_div">
+              <p class="option">Без исполнителя</p>
+            </div>
+            <div class="option_div">
+              <p class="option">В работе</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Исполненные</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Исполненные по отделу</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Просроченные</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Аннулированные</p>
+            </div>
+            <div class="option_div">
+              <p class="option">По типу заявки</p>
+            </div>
+          </div>
+          <div class="option_div">
+            <p class="option">По отделу</p>
+          </div>
+          <div class="option_div">
+            <p class="option" id="col7">По приоритету</p>
+          </div>
+          <div class="option_div">
+            <p class="option" id="col6">По категории</p>
+          </div>
+          <div class="multiple_options_name_div" id="3">
+            <i class="arrow right" id="arrow3"></i>
+            <p class="multiple_options_name">Отчет</p>
+          </div>
+          <div class="multiple_options_div hidden" id="list3">
+            <div class="option_div">
+              <p class="option">Для ЦА</p>
+            </div>
+            <div class="option_div">
+              <p class="option">По исполнителям</p>
+            </div>
+            <div class="option_div">
+              <p class="option">По номеру SAP</p>
+            </div>
+          </div>
+          <div class="option_div">
+            <p class="option">По расходным материалам</p>
+          </div>
+          <div class="option_div">
+            <p class="option">Баллы</p>
+          </div>
+          <div class="multiple_options_name_div" id="4">
+            <i class="arrow right" id="arrow4"></i>
+            <p class="multiple_options_name">Настройки</p>
+          </div>
+          <div class="multiple_options_div hidden" id="list4">
+            <div class="option_div">
+              <p class="option">Заявлено</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Исполнители</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Приоритет</p>
+            </div>
+            <div class="option_div">
+              <p class="option">Замена оператора</p>
+            </div>
+          </div>
+          <div class="option_div">
+            <p class="option">Качество</p>
+          </div>
+          <div class="option_div">
+            <p class="option">Номера</p>
+          </div>
+        </div>
+        <div class="content">
+          <table id="main_table">
+            <thead id="table_header">
+            </thead>
+            <tbody id="table_body">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
