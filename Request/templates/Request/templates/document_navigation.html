@@ -1,6 +1,26 @@
 <div class="link_div">
-  <p href="create_document.html" class="link">Сохранить</p>
+  <button class="link" type="button" form="create_document" id="create_document_button">Сохранить</button>
 </div>
 <div class="link_div">
   <p href="create_document.html" class="link">Отправить на подписание</p>
 </div>
+<script type="text/javascript">
+  $(document).ready(function() {
+     $("#create_document_button").click(function() {
+       for(var i=0;i<$('.requered').length;i++){
+          if($('.requered').eq(i).val()==""){
+           $('#'+$('.requered').eq(i).attr('class').split(' ')[1]+'2').addClass('red');
+           $('.'+$('.requered').eq(i).attr('class').split(' ')[1]+'1').addClass('red');
+           $('#'+$('.requered').eq(i).attr('class').split(' ')[2]).addClass('red');
+           $('#'+$('.requered').eq(i).attr('class').split(' ')[2]+'_title').addClass('red');
+           $('#'+$('.requered').eq(i).attr('class').split(' ')[2]+'_title').addClass('red');
+           $('#'+$("."+$('.requered').eq(i).attr('class').split(' ')[1]+'1').attr('class').split(' ')[1]+"_title").addClass('red');
+           $('#'+$('#'+$("."+$('.requered').eq(i).attr('class').split(' ')[1]+'1').attr('class').split(' ')[1]+"_title").attr('class').split(' ')[0]+"_title").addClass('red');
+          }
+       }
+       if($(document).find('.red').length==0){
+         $("#create_document_form").submit();
+       }
+     });
+  });
+</script>

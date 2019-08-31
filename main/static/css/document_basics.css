@@ -1,21 +1,71 @@
-category_div{
-    padding: 15px;
-    border: 1px solid #aaa;
-    box-shadow: 0 0 5px #555;
-    border-radius: 10px;
+.category-container{
+  display: inline-block;
+  vertical-align: top;
 }
-category_left_side_div{
-    display: inline-block;
+.category_div{
+  padding: 10px;
+  margin:10px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  display: inline-block;
 }
-category_right_side_div{
-    display: inline-block;
+.category_left_side_div{
+  display: inline-block;
+  text-align: right;
 }
-variable_name{
-    margin: 0;
-    padding: 3px 0 3px 3px;
-    font-weight: bold;
+.category_right_side_div{
+  display: inline-block;
 }
-variable_data{
-    margin: 0;
-    padding: 3px 3px 3px 0;
+.variable_name{
+  padding: 5px 0 5px 3px;
+  font-weight: bold;
+}
+.variable_data{
+  padding: 5px 3px 5px 0;
+}
+.title-div{
+  padding: 0 3px 0 3px;
+  margin-left: 20px;
+  position: absolute;
+  z-index: 1;
+  background-color: #eee;
+}
+.title{
+  color:#888;
+}
+select.variable-input{
+  height: 24px;
+}
+.display_inline{
+  display:inline-block;
+}
+.hidden_text{
+  color:#eee;
+}
+.content .red{
+  color: #f00;
+}
+.filter .red{
+  color: #f55;
+}
+.content div.red{
+  color: inherit;
+  border-color: #f00;
+}
+.content .title-div .red{
+  font-weight: bold;
+}
+input{
+  height:20px;
+  margin: 2px 0 2px 0;
+  padding: 0;
+}
+input, textarea{
+  border-radius: 6px;
+}
+input[type="file"]{
+  border-radius: 0;
+}
+input[type="checkbox"]{
+  height:13px;
 }

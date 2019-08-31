@@ -1,0 +1,6 @@
+.status{
+  float:right;
+}
+.status select.variable-input{
+  margin-left: 4px;
+}

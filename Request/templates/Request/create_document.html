@@ -1,26 +1,28 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Document Page</title>
-    <link rel="stylesheet" href="{% static "css/standart.css" %}">
-    <link rel="stylesheet" href="{% static "css/document.css" %}">
+    <link rel="stylesheet" href="css/standart.css">
+    <link rel="stylesheet" href="css/document_basics.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="{% static "scripts/toggle_lists.js" %}"></script>
+    <script src="scripts/toggle_lists.js"></script>
   </head>
   <body>
     <header>
       <nav class="navigation">
         <div id="navigation">
-            {% include "../main/templates/navigation.html" %}
+
         </div>
         <div id="navigation_content" class="dynamic_navigation">
-            {% include "Request/templates/document_navigation.html" %}
+
         </div>
       </nav>
       <script type="text/javascript">
       $(document).ready(function() {
+        $('#navigation').load("templates/navigation.html");
+        $('#navigation_content').load("templates/document_navigation.html");
+        $('#content').load("templates/applicant_page.html");
         $('main').css("height",$( window ).height()-40);
         $('.content').css("width",$( window ).width()-247);
         $( window ).resize(function() {
@@ -35,76 +37,70 @@
         <div class="filter">
           <div class="multiple_options_name_div" id="1">
             <i class="arrow right" id="arrow1"></i>
-            <p class="multiple_options_name">Заявлено</p>
+            <p class="multiple_options_name" id="total_data_title">Заявлено</p>
           </div>
-          <div class="multiple_options_div hidden" id="list1">
+          <div class="multiple_options_div total_data_content hidden" id="list1">
             <div class="multiple_options_name_div" id="11">
               <i class="arrow right" id="arrow11"></i>
-              <p class="multiple_options_name">Заявитель</p>
+              <p class="total_data multiple_options_name" id="applicant_data_title">Заявитель</p>
             </div>
-            <div class="multiple_options_div hidden" id="list11">
+            <div class="multiple_options_div applicant_data_content hidden" id="list11">
               <div class="option_div">
-                <p class="option">Заявитель</p>
+                <p class="applicant1 applicant_data option">Заявитель</p>
               </div>
               <div class="option_div">
-                <p class="option">Подразделение</p>
+                <p class="cabinet1 applicant_data option">Кабинет</p>
               </div>
               <div class="option_div">
-                <p class="option">Телефон</p>
-              </div>
-              <div class="option_div">
-                <p class="option">Кабанет</p>
-              </div>
-              <div class="option_div">
-                <p class="option">Местоположение</p>
+                <p class="location1 applicant_data option">Местоположение</p>
               </div>
             </div>
             <div class="multiple_options_name_div" id="12">
               <i class="arrow right" id="arrow12"></i>
-              <p class="multiple_options_name">Тип заявки</p>
+              <p class="total_data multiple_options_name" id="request_type_title">Тип заявки</p>
             </div>
-            <div class="multiple_options_div hidden" id="list12">
+            <div class="multiple_options_div request_type_content hidden" id="list12">
               <div class="option_div">
-                <p class="option">Способ обращения</p>
+                <p class="request_from1 request_type option">Способ обращения</p>
               </div>
               <div class="option_div">
-                <p class="option">Тип заявки</p>
+                <p class="request_type11 request_type option">Тип заявки</p>
               </div>
             </div>
             <div class="multiple_options_name_div" id="13">
               <i class="arrow right" id="arrow13"></i>
-              <p class="multiple_options_name">Заявление</p>
+              <p class="total_data multiple_options_name" id="request_data_title">Заявление</p>
             </div>
-            <div class="multiple_options_div hidden" id="list13">
+            <div class="multiple_options_div request_data_content hidden" id="list13">
               <div class="option_div">
-                <p class="option">Тип заявления</p>
+                <p class="request_type21 request_data option">Тип заявления</p>
               </div>
               <div class="option_div">
-                <p class="option">Приоритет</p>
+                <p class="request_priority1 option">Приоритет</p>
               </div>
               <div class="option_div">
-                <p class="option">Описание</p>
+                <p class="request_description1 request_data option">Описание</p>
               </div>
               <div class="option_div">
-                <p class="option">Вложения</p>
+                <p class="file1 option">Вложения</p>
               </div>
             </div>
             <div class="multiple_options_name_div" id="14">
               <i class="arrow right" id="arrow14"></i>
-              <p class="multiple_options_name">Статус</p>
+              <p class="total_data multiple_options_name" id="status_data_title">Статус</p>
             </div>
-            <div class="multiple_options_div hidden" id="list14">
+            <div class="multiple_options_div status_data_content hidden" id="list14">
               <div class="option_div">
-                <p class="option">Заявитель оповещен</p>
+                <p class="applicant_notified1 option">Заявитель оповещен</p>
               </div>
               <div class="option_div">
-                <p class="option">Исполнитель оповещен</p>
+                <p class="performer_notified1 option">Исполнитель оповещен</p>
               </div>
               <div class="option_div">
-                <p class="option">Оператор оповещен</p>
+                <p class="operator_notified1 option">Оператор оповещен</p>
               </div>
               <div class="option_div">
-                <p class="option">Смена статуса</p>
+                <p class="status1 status_data option">Смена статуса</p>
               </div>
             </div>
           </div>
@@ -114,25 +110,10 @@
           </div>
           <div class="multiple_options_div hidden" id="list2">
             <div class="option_div">
-                <p class="option">Исполнитель</p>
+              <p class="option">Оп1</p>
             </div>
-            <div class="multiple_options_name_div" id="21">
-              <i class="arrow right" id="arrow21"></i>
-              <p class="multiple_options_name">Эсклация</p>
-            </div>
-            <div class="multiple_options_div hidden" id="list21">
-              <div class="option_div">
-                <p class="option">Заявитель оповещен</p>
-              </div>
-              <div class="option_div">
-                <p class="option">Исполнитель оповещен</p>
-              </div>
-              <div class="option_div">
-                <p class="option">Оператор оповещен</p>
-              </div>
-              <div class="option_div">
-                <p class="option">Смена статуса</p>
-              </div>
+            <div class="option_div">
+              <p class="option">Оп2</p>
             </div>
           </div>
           <div class="multiple_options_name_div" id="3">
@@ -148,24 +129,8 @@
             </div>
           </div>
         </div>
-        <div class="content">
-           {% include "Request/templates/applicant_page.html" %}
-            <form>
-    <link rel="stylesheet" href="{% static "css/document_basics.css" %}">
-    <link rel="stylesheet" href="{% static "css/applicant_page.css" %}">
-    <div class="category_div request_data">
-        <div class="category_left_side_div">
-            <p class="variable_name">Номер заявки:</p>
-            <p class="variable_name">Дата регистрации:</p>
-            <p class="variable_name">Адрес:</p>
-        </div>
-        <div class="category_right_side_div">
-            <p class="variable_data">-</p>
-            <p class="variable_data">-</p>
-            <p class="variable_data">Name Surname</p>
-        </div>
-    </div>
-</form>
+        <div class="content" id="content">
+
         </div>
       </div>
     </main>
