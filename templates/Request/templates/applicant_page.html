@@ -41,15 +41,17 @@
       <p class="variable_name hidden_text">-</p>
     </div>
     <div class="category_right_side_div">
-      <input class="discret applicant_notified checkbox" type="checkbox" name="applicant_notified" value="true"><p class="variable_data display_inline">Заявитель оповещен</p><br>
-      <input class="discret performer_notified checkbox" type="checkbox" name="performer_notified" value="true"><p class="variable_data display_inline">Исполнитель оповещен</p><br>
-      <input class="discret operator_notified checkbox" type="checkbox" name="operator_notified" value="true"><p class="variable_data display_inline">Оператор оповещен</p><br>
-      <select class="requered status status_form" name="status">
-        <option value=""></option>
-        <option value="">Отправлено на доработку</option>
-        <option value="" selected>Вернуть в работу</option>
-      </select><br>
-      <input class="variable-input checkbox" type="checkbox" name="storage" value="true"><p class="variable_data display_inline">Требуется отметка со склада</p><br>
+      {{ form.applicant_is_notified }}<p class="variable_data display_inline">Заявитель оповещен</p><br>{#<input class="discret applicant_notified checkbox" type="checkbox" name="applicant_notified" value="true"><p class="variable_data display_inline">Заявитель оповещен</p><br>#}
+      {{ form.performer_is_notified }}<p class="variable_data display_inline">Исполнитель оповещен</p><br>{#<input class="discret performer_notified checkbox" type="checkbox" name="performer_notified" value="true"><p class="variable_data display_inline">Исполнитель оповещен</p><br>#}
+      {{ form.operator_is_notified }}<p class="variable_data display_inline">Оператор оповещен</p><br>{#<input class="discret operator_notified checkbox" type="checkbox" name="operator_notified" value="true"><p class="variable_data display_inline">Оператор оповещен</p><br>#}
+{#      <select class="requered status status_form" name="status">#}
+{#        <option value=""></option>#}
+{#        <option value="">Отправлено на доработку</option>#}
+{#        <option value="" selected>Вернуть в работу</option>#}
+{#      </select><br>#}
+       {{ form.status }}<br>
+{#      <input class="variable-input checkbox" type="checkbox" name="storage" value="true"><p class="variable_data display_inline">Требуется отметка со склада</p><br>#}
+       {{ form.storage }}<p class="variable_data display_inline">Требуется отметка со склада</p><br>
     </div>
   </div>
 </div>
@@ -67,16 +69,28 @@
       <p class="variable_name" id="location2">Местоположение:</p>
     </div>
     <div class="category_right_side_div">
-      <select class="requered applicant applicant_form" name="applicant">
-        <option value=""></option>
-        <option value="1">В разработке</option>
-        <option value="2">В разработке1</option>
-        <option value="3">В разработке2</option>
-      </select><br>
+{#      <select class="requered applicant applicant_form" name="applicant">#}
+{#        <option value=""></option>#}
+{#        <option value="1">В разработке</option>#}
+{#        <option value="2">В разработке1</option>#}
+{#        <option value="3">В разработке2</option>#}
+{#      </select><br>#}
+        {{ form.applicant }} <br>
+
+
+
+
       <p class="variable_data">-</p>
       <p class="variable_data">+X(XXX)-XXX-XX-XX</p>
-      <input class="requered cabinet applicant_form" type="number" name="cabinet" maxlength="3"><br>
-      <input class="requered location applicant_form" type="text" name="building">
+
+
+
+
+
+      {% comment %}<input class="requered cabinet applicant_form" type="number" name="cabinet" maxlength="3"><br>
+      <input class="requered location applicant_form" type="text" name="building">{% endcomment %}
+      {{ form.room }} <br>
+      {{ form.building }} <br>
     </div>
   </div>
 </div>
@@ -90,14 +104,16 @@
       <p class="variable_name" id="request_type12">Тип заявки:</p>
     </div>
     <div class="category_right_side_div">
-      <select class="requered request_from request_form" name="request_from">
-        <option value=""></option>
-        <option value="">В разработке</option>
-      </select><br>
-      <select class="requered request_type1 request_form" name="request_type1" se>
-        <option value=""></option>
-        <option value="">В разработке</option>
-      </select><br>
+{#      <select class="requered request_from request_form" name="request_from">#}
+{#        <option value=""></option>#}
+{#        <option value="">В разработке</option>#}
+{#      </select><br>#}
+{#        <select class="requered request_type1 request_form" name="request_type1" se>#}
+{#        <option value=""></option>#}
+{#        <option value="">В разработке</option>#}
+{#      </select><br>#}
+        {{ form.way_to_treat }}<br>
+        {{ form.type_of_request }}<br>
     </div>
   </div>
 </div><br>
@@ -118,16 +134,20 @@
       <p class="variable_name">Вложения:</p>
     </div>
     <div class="category_right_side_div">
-      <select class="requered request_type2 request_form2" name="request_type2">
-        <option value=""></option>
-        <option value="">В разработке</option>
-      </select><br>
-      <select class="discret request_priority" name="request_priority">
-        <option value=""></option>
-        <option value="">В разработке</option>
-      </select><br>
-      <textarea class="requered request_description request_form2" name="request_description" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>
-      <input class="discret applicant_file file" type="file" name="request_additions">
+{#      <select class="requered request_type2 request_form2" name="request_type2">#}
+{#        <option value=""></option>#}
+{#        <option value="">В разработке</option>#}
+{#      </select><br>#}
+        {{ form.type }}<br>
+{#      <select class="discret request_priority" name="request_priority">#}
+{#        <option value=""></option>#}
+{#        <option value="">В разработке</option>#}
+{#      </select><br>#}
+        {{ form.priority }}<br>
+{#      <textarea class="requered request_description request_form2" name="request_description" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>#}
+        {{ form.description }}<br>
+{#      <input class="discret applicant_file file" type="file" name="request_additions">#}
+        {{ form.file }}
     </div>
   </div>
 </div>
