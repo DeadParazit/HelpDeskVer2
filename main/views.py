@@ -6,6 +6,10 @@ from main.models import Type_Of_Request, Employee, Request
 
 def main(request):
     all_requests = Request.objects.all()
+
+    all_formated_date = list()
+    for req in all_requests:
+        req.time = req.time.strftime("%H:%M")
     context = {
         'all_requests': all_requests,
     }

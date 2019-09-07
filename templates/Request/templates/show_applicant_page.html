@@ -1,0 +1,175 @@
+{% load static %}
+    <link rel="stylesheet" href="{% static "css/document_basics.css" %}">
+    <link rel="stylesheet" href="{% static "css/applicant_page.css" %}">
+    <link href="{% static "scripts/select2-develop/dist/css/select2.min.css" %}" rel="stylesheet" />
+    <script src="{% static "scripts/select2-develop/dist/js/select2.min.js" %}"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('select').addClass('js-example-basic-single');
+      });
+    </script>
+    <div class="category-container main-info">
+      <div class="title-div">
+        <p class="title">Общая информация</p>
+      </div>
+      <div class="category_div request_data">
+        <div class="category_left_side_div">
+          <p class="variable_name">Номер заявки:</p>
+          <p class="variable_name">Дата регистрации:</p>
+          <p class="variable_name">Автор:</p>
+        </div>
+        <div class="category_right_side_div">
+          <p class="variable_data">{{ specific_request.pk }}</p>
+          <p class="variable_data">{{ specific_request.date }}</p>
+          <p class="variable_data">Name Surname</p>
+        </div>
+      </div>
+    </div>
+    <div class="category-container status">
+      <div class="title-div">
+        <p class="title">Статус</p>
+      </div>
+      <div class="category_div">
+        <div class="category_left_side_div">
+          <p class="variable_name">Оповещения:</p>
+          <p class="variable_name hidden_text" >-</p>
+          <p class="variable_name hidden_text">-</p>
+          <p class="variable_name">Статус:</p>
+          <p class="variable_name hidden_text">-</p>
+        </div>
+        <div class="category_right_side_div">
+          <p class="variable_data display_inline">Заявитель оповещен</p><br>
+          <p class="variable_data display_inline">Исполнитель оповещен</p><br>
+          <p class="variable_data display_inline">Оператор оповещен</p><br>
+{#          <select class="variable-input" id="status_select" name="status">#}
+{#            <option value=""></option>#}
+{#            <option value="Выполняется">В процессе</option>#}
+{#            <option value="Выполнена" selected>Выполнена</option>#}
+{#          </select><br>#}
+            {{ specific_request.status }} <br>
+
+
+          <p class="variable_data display_inline">Требуется отметка со склада</p><br>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="category-container applicant">
+      <div class="title-div">
+        <p class="title">Заявитель</p>
+      </div>
+      <div class="category_div">
+        <div class="category_left_side_div">
+          <p class="variable_name">Заявитель:</p>
+          <p class="variable_name">Подразделение:</p>
+          <p class="variable_name">Телефон:</p>
+          <p class="variable_name">Кабинет:</p>
+          <p class="variable_name">Местоположение:</p>
+        </div>
+        <div class="category_right_side_div">
+{#        {{ selected_applicant = type('Employee', (), {})() }}#}
+{#          <select class="variable-input" id="applicant_select" name="applicant">#}
+{#            <option value=""></option>#}
+{#              {% for applicant in all_employers %}#}
+{#                  name = applicant.name[0:1]#}
+{#                  patronymic =  applicant.patronymic[0:1]#}
+{#                  <option class="option_applicant" value="{{ applicant.id }}">{{ applicant.surname }} {{ name }}.{{ patronymic }}.</option>#}
+{#              {% endfor %}#}
+{#          </select><br>#}
+
+            {{ specific_request.applicant }} <br>
+
+            <script type="text/javascript">
+                $('#applicant_select').on("change", function () {
+                    $.ajax(
+                        {
+                            type: "GET",
+                            url: "{% url 'request:show_applicant_ajax' %}",
+                            data: {
+                                applicant_id: $('#applicant_select').val(),
+                            },
+                            success: function (data) {
+                               $('#applicant_ajax_data').html(data);
+                            }
+                        })
+                });
+            </script>
+
+        <div id="applicant_ajax_data">
+          <p class="variable_data">-</p>
+          <p class="variable_data">-</p>
+        </div>
+
+          {{ specific_request.room }}<br>
+          {{ specific_request.building }}<br>
+        </div>
+      </div>
+    </div>
+    <div class="category-container request-info">
+      <div class="title-div">
+        <p class="title">Тип заявки</p>
+      </div>
+      <div class="category_div">
+        <div class="category_left_side_div">
+          <p class="variable_name">Способ обращения:</p>
+          <p class="variable_name">Тип заявки:</p>
+        </div>
+        <div class="category_right_side_div">
+{#          <select class="variable-input" name="way_to_treat">#}
+{#            <option value="AB">AB</option>#}
+{#            <option value="BA">BA</option>#}
+{#          </select><br>#}
+            {{ specific_request.way_to_treat }} <br>
+{#          <select class="variable-input" name="type_of_request">#}
+{#            <option value="AB">AB</option>#}
+{#            <option value="BA">BA</option>#}
+{#          </select><br>#}
+            {{ specific_request.type_of_request }} <br>
+        </div>
+      </div>
+    </div><br>
+    <div class="category-container request">
+      <div class="title-div">
+        <p class="title">Заявление</p>
+      </div>
+      <div class="category_div">
+        <div class="category_left_side_div">
+          <p class="variable_name">Тип заявления:</p>
+          <p class="variable_name">Приоритет:</p>
+          <p class="variable_name">Описание:</p>
+          <p class="variable_name hidden_text">-</p>
+          <p class="variable_name hidden_text">-</p>
+          <p class="variable_name hidden_text">-</p>
+          <p class="variable_name hidden_text">-</p>
+          <p class="variable_name hidden_text">-</p>
+          <p class="variable_name">Вложения:</p>
+        </div>
+        <div class="category_right_side_div">
+{#          <select class="variable-input" id="request_select" name="type">#}
+{#          <option value=""></option>#}
+{#              {% for type in all_request_types %}#}
+{#                  <option value="{{ type.id }}">{{ type.name }}</option>#}
+{#              {% endfor %}#}
+{#          </select><br>#}
+
+            {{ specific_request.type.name }} <br>
+
+{#          <select class="variable-input" name="priority">#}
+{#            <option value="1">1</option>#}
+{#            <option value="2">2</option>#}
+{#            <option value="3">3</option>#}
+{#            <option value="4">4</option>#}
+{#            <option value="5">5</option>#}
+{#            <option value="6">6</option>#}
+{#            <option value="7">7</option>#}
+{#            <option value="8">8</option>#}
+{#            <option value="9">9</option>#}
+{#            <option value="10">10</option>#}
+{#          </select><br>#}
+        {{ specific_request.priority }} <br>
+
+          {{ specific_request.description }}<br>
+          {{ specific_request.file }}
+        </div>
+      </div>
+    </div>

@@ -7,5 +7,6 @@ app_name = 'request'
 
 urlpatterns = [
     path('', views.create, name='createRequest'),
-    path('<int:id>/', views.show, name='showRequest'),
+    path('show/', views.show_applicant_ajax, name='show_applicant_ajax'), #show applicant info(ajax, applicant_page.html),
+    path('create_document/', views.create_form, name='create_form'),
 ]
