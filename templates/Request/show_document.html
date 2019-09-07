@@ -12,17 +12,14 @@
     <header>
       <nav class="navigation">
         <div id="navigation">
-
+            {% include "Request/templates/navigation.html" %}
         </div>
         <div id="navigation_content" class="dynamic_navigation">
-
+            {% include "Request/templates/document_navigation.html" %}
         </div>
       </nav>
       <script type="text/javascript">
       $(document).ready(function() {
-        $('#navigation').load("templates/navigation.html");
-        $('#navigation_content').load("templates/document_navigation.html");
-        $('#applicant_page').load("templates/applicant_page.html");
         $('main').css("height",$( window ).height()-40);
         $('.content').css("width",$( window ).width()-247);
         $('#applicant_page').css("width",$( window ).width()-247);
@@ -108,11 +105,7 @@
           </div>
         </div>
         <div class="content" id="content">
-          <form action="create_document" id="document_form">
-            <div id="applicant_page" style="display:block;overflow:scroll;height:100%">
-
-            </div>
-          </form>
+            {% include "Request/templates/show_applicant_page1.html" %}
         </div>
       </div>
     </main>
