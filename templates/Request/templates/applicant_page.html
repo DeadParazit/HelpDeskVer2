@@ -79,12 +79,26 @@
 
 
 
+        <div id="applicant_data">
+          <p class="variable_data">-</p>
+          <p class="variable_data">-</p>
+        </div>
 
-      <p class="variable_data">-</p>
-      <p class="variable_data">+X(XXX)-XXX-XX-XX</p>
-
-
-
+        <script type="text/javascript">
+            $('#applicant_select').on('change', function () {
+                $.ajax(
+                    {
+                        type: "GET",
+                        url: "{% url 'request:show_applicant_ajax' %}",
+                        data: {
+                            applicant_id: $('#applicant_select').val(),
+                        },
+                        success: function (data) {
+                           $('#applicant_data').html(data);
+                        }
+                    })
+            });
+        </script>
 
 
       {% comment %}<input class="requered cabinet applicant_form" type="number" name="cabinet" maxlength="3"><br>
