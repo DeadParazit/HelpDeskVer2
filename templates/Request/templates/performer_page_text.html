@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="css/performer_page.css">
-<link href="scripts/select2-develop/dist/css/select2.min.css" rel="stylesheet" />
-<script src="scripts/select2-develop/dist/js/select2.min.js"></script>
-<script src="scripts/functions2.js"></script>
+{% load static %}
+<link rel="stylesheet" href="{% static "css/performer_page.css" %} ">
+<link href="{% static "scripts/select2-develop/dist/css/select2.min.css" %} " rel="stylesheet" />
+<script src="{% static "scripts/select2-develop/dist/js/select2.min.js" %} "></script>
+<script src="{% static "scripts/functions2.js" %} "></script>
 <script type="text/javascript">
   applyInputLimits();
   applyInputRequerments();
@@ -53,29 +54,19 @@
     </div>
   </div>
 </div>
-<div class="category-container materials hidden">
-  <div class="title-div materials hidden">
+<!-- if есть расход материалов -->
+<div class="category-container materials">
+  <div class="title-div materials">
     <p class="title" id="materials_usage_form_title">Исполнение</p>
   </div>
-  <div class="category_div materials hidden" id="materials_usage_form">
+  <div class="category_div materials" id="materials_usage_form">
     <div class="category_left_side_div" style="vertical-align:top">
       <p class="variable_name ">Расход материалов:</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
     </div>
     <div class="category_right_side_div">
-      <textarea class="discret materials_usage_description materials_usage_form" name="" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>
-      <select class="discret storage_type materials_usage_form" name="storage_type">
-        <option value=""></option>
-        <option value="1">В разработке</option>
-        <option value="2">В разработке1</option>
-        <option value="3">В разработке2</option>
-      </select>
-      <input class="variable-input checkbox materials_usage_new" type="checkbox" name="materials_usage_new" value="true"><p class="variable_data display_inline">Новый</p><br>
+        <p class="variable_data"><!-- Новый(в случае если была галочка на чекбоксе) тип склада(результат поля селект возле чекбокса)--></p>
+        <p class="variable_data"><!-- результат тексареи--></p>
     </div>
   </div>
 </div>
+<!-- endif  -->

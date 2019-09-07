@@ -1,30 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Document Page</title>
-    <link rel="stylesheet" href="css/standart.css">
-    <link rel="stylesheet" href="css/document_basics.css">
+    <link rel="stylesheet" href="{% static "css/standart.css" %} ">
+    <link rel="stylesheet" href="{% static "css/document_basics.css" %} ">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="scripts/toggle_lists.js"></script>
+    <script src="{% static "scripts/toggle_lists.js" %} "></script>
   </head>
   <body>
     <header>
       <nav class="navigation">
         <div id="navigation">
-
+            {% include "Request/templates/navigation.html" %}
         </div>
         <div id="navigation_content" class="dynamic_navigation">
-
+            {% include "Request/templates/document_navigation.html" %}
         </div>
       </nav>
       <script type="text/javascript">
       $(document).ready(function() {
-        $('#navigation').load("templates/navigation.html");
-        $('#navigation_content').load("templates/document_navigation.html");
-        $('#applicant_page').load("templates/applicant_page_text.html");
         $('#applicant_page').addClass('hidden');
-        $('#performer_page').load("templates/performer_page.html");
         $('main').css("height",$( window ).height()-40);
         $('.content').css("width",$( window ).width()-247);
         $( window ).resize(function() {
@@ -120,10 +117,10 @@
         <div class="content" id="content">
           <form action="update_performer" id="document_form">
             <div id="applicant_page">
-
+                {% include "Request/templates/applicant_page_text.html" %}
             </div>
             <div id="performer_page">
-
+                {% include "Request/templates/performer_page.html" %}
             </div>
             <div id="applicant_page2">
 
