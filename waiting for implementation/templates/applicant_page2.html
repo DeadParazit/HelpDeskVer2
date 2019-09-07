@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="css/applicant_page2.css">
+<link href="scripts/select2-develop/dist/css/select2.min.css" rel="stylesheet" />
+<script src="scripts/select2-develop/dist/js/select2.min.js"></script>
+<script src="scripts/functions2.js"></script>
+<script type="text/javascript">
+  applyInputLimits();
+  applyInputRequerments();
+  applyClickSelection();
+  $("select").select2({
+    placeholder: "Select a state"
+  });
+</script>
+<div class="category-container request_mark">
+  <div class="title-div">
+    <p class="title" id="request_mark_form_title">Качество</p>
+  </div>
+  <div class="category_div" id="request_mark_form">
+    <div class="category_left_side_div" style="vertical-align:top">
+      <p class="variable_name" id="request_mark2">Оценка:</p>
+      <p class="variable_name" id="request_comment2">Комментарий:</p>
+    </div>
+    <div class="category_right_side_div">
+      <select class="requered request_mark request_mark_form" name="request_mark">
+        <option value=""></option>
+        <option value="">В разработке</option>
+      </select><br>
+      <textarea class="requered request_comment request_mark_form" name="request_comment" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>
+    </div>
+  </div>

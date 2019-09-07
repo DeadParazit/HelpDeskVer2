@@ -60,9 +60,6 @@ main{
   background-color: #888;
   box-shadow: 0 0 8px #000 inset;
 }
-.hidden{
-  display: none;
-}
 .multiple_options_div .option{
   padding-left: 15px;
 }
@@ -97,6 +94,7 @@ i {
 }
 ::-webkit-scrollbar {
   width: 10px;
+  height: 0px;
 }
 ::-webkit-scrollbar-track {
   background: #eee;
@@ -106,4 +104,19 @@ i {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:not(input[type=checkbox]){
+  margin:0;
+  height: 24px;
+}
+.select2-selection{
+  height: 24px;
+}
+.hidden{
+  display: none;
 }

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Document Page</title>
+    <link rel="stylesheet" href="css/standart.css">
+    <link rel="stylesheet" href="css/document_basics.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="scripts/toggle_lists.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navigation">
+        <div id="navigation">
+
+        </div>
+        <div id="navigation_content" class="dynamic_navigation">
+
+        </div>
+      </nav>
+      <script type="text/javascript">
+      $(document).ready(function() {
+        $('#navigation').load("templates/navigation.html");
+        $('#navigation_content').load("templates/document_navigation.html");
+        $('#applicant_page').load("templates/applicant_page_text.html");
+        $('#applicant_page').addClass('hidden');
+        $('#performer_page').load("templates/performer_page_text.html");
+        $('#performer_page').addClass('hidden');
+        $('#applicant_page2').load("templates/applicant_page2.html");
+        $('main').css("height",$( window ).height()-40);
+        $('.content').css("width",$( window ).width()-247);
+        $( window ).resize(function() {
+          $('main').css("height",$( window ).height()-40);
+          $('.content').css("width",$( window ).width()-247);
+        });
+        $('.form1').unbind('click');
+        $('.form1').on('click',function(){
+          $('#applicant_page').removeClass('hidden');
+          $('#list1').removeClass("hidden");
+          $('#performer_page').addClass('hidden');
+          $('#list2').addClass("hidden");
+          $('#applicant_page2').addClass('hidden');
+          $('#list3').addClass("hidden");
+          $('#arrow3').addClass("right");
+          $('#arrow3').removeClass("down");
+        });
+        $('.form2').unbind('click');
+        $('.form2').on('click',function(){
+          $('#applicant_page').addClass('hidden');
+          $('#list1').addClass("hidden");
+          $('#performer_page').removeClass('hidden');
+          $('#list2').removeClass("hidden");
+          $('#applicant_page2').addClass('hidden');
+          $('#list3').addClass("hidden");
+          $('#arrow3').addClass("right");
+          $('#arrow3').removeClass("down");
+        });
+        $('.form3').unbind('click');
+        $('.form3').on('click',function(){
+          $('#applicant_page').addClass('hidden');
+          $('#list1').addClass("hidden");
+          $('#performer_page').addClass('hidden');
+          $('#list2').addClass("hidden");
+          $('#applicant_page2').removeClass('hidden');
+          $('#list3').removeClass("hidden");
+          $('#arrow3').removeClass("right");
+          $('#arrow3').addClass("down");
+        });
+      });
+      </script>
+    </header>
+    <main>
+      <div class="relative_map">
+        <div class="filter">
+          <div class="multiple_options_name_div form1" id="1">
+            <p class="multiple_options_name" id="total_data_title">Заявлено</p>
+          </div>
+          <div class="multiple_options_div total_data_content hidden form1" id="list1">
+
+          </div>
+          <div class="multiple_options_name_div form2" id="2">
+            <p class="multiple_options_name" id="total_performer_data_title">Исполнение</p>
+          </div>
+          <div class="multiple_options_div total_performer_data_content hidden form2" id="list2">
+
+          </div>
+          <div class="multiple_options_name_div form3" id="3">
+            <i class="arrow right" id="arrow3"></i>
+            <p class="multiple_options_name" id="total_quality_data_title">Качество</p>
+          </div>
+          <div class="multiple_options_div total_quality_data_content hidden form3" id="list3">
+            <div class="multiple_options_name_div" id="31">
+              <i class="arrow right" id="arrow31"></i>
+              <p class="total_quality_data multiple_options_name" id="request_quality_title">Качество</p>
+            </div>
+            <div class="multiple_options_div request_quality_content hidden" id="list31">
+              <div class="option_div">
+                <p class="request_mark1 request_quality option">Оценка</p>
+              </div>
+              <div class="option_div">
+                <p class="request_comment1 request_quality option">Комментарий</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content" id="content">
+          <form action="update_applicant" id="document_form">
+            <div id="applicant_page">
+
+            </div>
+            <div id="performer_page">
+
+            </div>
+            <div id="applicant_page2">
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

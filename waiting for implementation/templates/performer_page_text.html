@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="css/performer_page.css">
+<link href="scripts/select2-develop/dist/css/select2.min.css" rel="stylesheet" />
+<script src="scripts/select2-develop/dist/js/select2.min.js"></script>
+<script src="scripts/functions2.js"></script>
+<script type="text/javascript">
+  applyInputLimits();
+  applyInputRequerments();
+  applyClickSelection();
+  $("select").select2({
+    placeholder: "Select a state"
+  });
+</script>
+<div class="category-container performer_data_container">
+  <div class="title-div">
+    <p class="title" id="performer_data_form_title">Исполнитель</p>
+  </div>
+  <div class="category_div" id="performer_data_form">
+    <div class="category_left_side_div">
+      <p class="variable_name">Исполнитель:</p>
+      <!-- if эскалант -->
+      <p class="variable_name hidden_text exsc">-</p>
+      <!-- endif -->
+      <p class="variable_name">Телефон:</p>
+      <p class="variable_name">Статус:</p>
+    </div>
+    <div class="category_right_side_div">
+      <p class="variable_data">-</p>
+      <!-- if эскалант -->
+      <p class="variable_data">Эскалант</p>
+      <!-- endif  -->
+      <p class="variable_data">+X(XXX)-XXX-XX-XX</p>
+      <p class="variable_data">-</p>
+    </div>
+  </div>
+</div><br>
+<div class="category-container work_progress">
+  <div class="title-div">
+    <p class="title" id="performer_progress_form_title">Исполнение</p>
+  </div>
+  <div class="category_div" id="performer_progress_form">
+    <div class="category_left_side_div" style="vertical-align:top">
+      <p class="variable_name date_exp">Дата завершения:</p>
+      <p class="variable_name ">Код закрытия:</p>
+      <p class="variable_name ">Сложность:</p>
+      <p class="variable_name ">Исполнение и вложения:</p>
+    </div>
+    <div class="category_right_side_div" style="vertical-align:top">
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data" style="overflow:auto;max-width:300px">-</p>
+      <img style="width:125px;height:125px;padding:10px;display:inline-block;"><!-- картинки в таком формате -->
+    </div>
+  </div>
+</div>
+<div class="category-container materials hidden">
+  <div class="title-div materials hidden">
+    <p class="title" id="materials_usage_form_title">Исполнение</p>
+  </div>
+  <div class="category_div materials hidden" id="materials_usage_form">
+    <div class="category_left_side_div" style="vertical-align:top">
+      <p class="variable_name ">Расход материалов:</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+    </div>
+    <div class="category_right_side_div">
+      <textarea class="discret materials_usage_description materials_usage_form" name="" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>
+      <select class="discret storage_type materials_usage_form" name="storage_type">
+        <option value=""></option>
+        <option value="1">В разработке</option>
+        <option value="2">В разработке1</option>
+        <option value="3">В разработке2</option>
+      </select>
+      <input class="variable-input checkbox materials_usage_new" type="checkbox" name="materials_usage_new" value="true"><p class="variable_data display_inline">Новый</p><br>
+    </div>
+  </div>
+</div>

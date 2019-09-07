@@ -1,0 +1,118 @@
+
+<link rel="stylesheet" href="css/applicant_page.css">
+<link href="scripts/select2-develop/dist/css/select2.min.css" rel="stylesheet" />
+<script src="scripts/select2-develop/dist/js/select2.min.js"></script>
+<script src="scripts/functions2.js"></script>
+<script type="text/javascript">
+  applyInputLimits();
+  applyInputRequerments();
+  applyClickSelection();
+  $("select").select2({
+    placeholder: "Select a state"
+  });
+</script>
+<div class="category-container main-info">
+  <div class="title-div">
+    <p class="title">Общая информация</p>
+  </div>
+  <div class="category_div request_data">
+    <div class="category_left_side_div">
+      <p class="variable_name">Номер заявки:</p>
+      <p class="variable_name">Дата регистрации:</p>
+      <p class="variable_name">Автор:</p>
+    </div>
+    <div class="category_right_side_div">
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+    </div>
+  </div>
+</div>
+<div class="category-container status">
+  <div class="title-div">
+    <p class="title" id="status_form_title">Статус</p>
+  </div>
+  <div class="category_div" id="status_form">
+    <div class="category_left_side_div">
+      <p class="variable_name">Оповещения:</p>
+      <!-- if оповещения > 1 -->
+      <p class="variable_name hidden_text" >-</p>
+      <!-- endif -->
+      <!-- if опвещения > 2 -->
+      <p class="variable_name hidden_text">-</p>
+      <!-- endif -->
+      <p class="variable_name" id="status2">Статус:</p>
+      <p class="variable_name hidden_text">-</p>
+    </div>
+    <div class="category_right_side_div">
+      <!-- if -->
+      <p class="variable_data ">Заявитель оповещен</p>
+      <!-- endif -->
+      <!-- if -->
+      <p class="variable_data ">Исполнитель оповещен</p>
+      <!-- endif -->
+      <!-- if -->
+      <p class="variable_data ">Оператор оповещен</p>
+      <!-- endif -->
+      <p class="variable_data ">-<!-- текущий статус -->-</p>
+      <!-- if -->
+      <p class="variable_data ">Требуется отметка со склада</p>
+      <!-- endif -->
+    </div>
+  </div>
+</div>
+<br>
+<div class="category-container applicant">
+  <div class="title-div">
+    <p class="title" id="applicant_form_title">Заявитель</p>
+  </div>
+  <div class="category_div" id="applicant_form">
+    <div class="category_left_side_div">
+      <p class="variable_name" id="applicant2">Заявитель:</p>
+      <p class="variable_name">Подразделение:</p>
+      <p class="variable_name">Телефон:</p>
+      <p class="variable_name" id="cabinet2">Кабинет:</p>
+      <p class="variable_name" id="location2">Местоположение:</p>
+    </div>
+    <div class="category_right_side_div">
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+    </div>
+  </div>
+</div>
+<div class="category-container request-info">
+  <div class="title-div">
+    <p class="title" id="request_form_title">Тип заявки</p>
+  </div>
+  <div class="category_div" id="request_form">
+    <div class="category_left_side_div">
+      <p class="variable_name" id="request_from2">Способ обращения:</p>
+      <p class="variable_name" id="request_type12">Тип заявки:</p>
+    </div>
+    <div class="category_right_side_div">
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+    </div>
+  </div>
+</div><br>
+<div class="category-container request">
+  <div class="title-div">
+    <p class="title" id="request_form2_title">Заявление</p>
+  </div>
+  <div class="category_div" id="request_form2">
+    <div class="category_left_side_div">
+      <p class="variable_name" id="request_type22">Тип заявления:</p>
+      <p class="variable_name">Приоритет:</p>
+      <p class="variable_name" id="request_description2">Описание и вложения:</p>
+    </div>
+    <div class="category_right_side_div" style="vertical-align:top">
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data" style="overflow:auto;max-width:300px">-</p>
+      <img style="width:125px;height:125px;padding:10px;display:inline-block;"><!-- картинки в таком формате -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,133 @@
+
+<link rel="stylesheet" href="css/applicant_page.css">
+<link href="scripts/select2-develop/dist/css/select2.min.css" rel="stylesheet" />
+<script src="scripts/select2-develop/dist/js/select2.min.js"></script>
+<script src="scripts/functions2.js"></script>
+<script type="text/javascript">
+  applyInputLimits();
+  applyInputRequerments();
+  applyClickSelection();
+  $("select").select2({
+    placeholder: "Select a state"
+  });
+</script>
+<div class="category-container main-info">
+  <div class="title-div">
+    <p class="title">Общая информация</p>
+  </div>
+  <div class="category_div request_data">
+    <div class="category_left_side_div">
+      <p class="variable_name">Номер заявки:</p>
+      <p class="variable_name">Дата регистрации:</p>
+      <p class="variable_name">Адрес:</p>
+    </div>
+    <div class="category_right_side_div">
+      <p class="variable_data">-</p>
+      <p class="variable_data">-</p>
+      <p class="variable_data">Name Surname</p>
+    </div>
+  </div>
+</div>
+<div class="category-container status">
+  <div class="title-div">
+    <p class="title" id="status_form_title">Статус</p>
+  </div>
+  <div class="category_div" id="status_form">
+    <div class="category_left_side_div">
+      <p class="variable_name">Оповещения:</p>
+      <p class="variable_name hidden_text" >-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name" id="status2">Статус:</p>
+      <p class="variable_name hidden_text">-</p>
+    </div>
+    <div class="category_right_side_div">
+      <input class="discret applicant_notified checkbox" type="checkbox" name="applicant_notified" value="true"><p class="variable_data display_inline">Заявитель оповещен</p><br>
+      <input class="discret performer_notified checkbox" type="checkbox" name="performer_notified" value="true"><p class="variable_data display_inline">Исполнитель оповещен</p><br>
+      <input class="discret operator_notified checkbox" type="checkbox" name="operator_notified" value="true"><p class="variable_data display_inline">Оператор оповещен</p><br>
+      <select class="requered status status_form" name="status">
+        <option value=""></option>
+        <option value="">Отправлено на доработку</option>
+        <option value="" selected>Вернуть в работу</option>
+      </select><br>
+      <input class="variable-input checkbox" type="checkbox" name="storage" value="true"><p class="variable_data display_inline">Требуется отметка со склада</p><br>
+    </div>
+  </div>
+</div>
+<br>
+<div class="category-container applicant">
+  <div class="title-div">
+    <p class="title" id="applicant_form_title">Заявитель</p>
+  </div>
+  <div class="category_div" id="applicant_form">
+    <div class="category_left_side_div">
+      <p class="variable_name" id="applicant2">Заявитель:</p>
+      <p class="variable_name">Подразделение:</p>
+      <p class="variable_name">Телефон:</p>
+      <p class="variable_name" id="cabinet2">Кабинет:</p>
+      <p class="variable_name" id="location2">Местоположение:</p>
+    </div>
+    <div class="category_right_side_div">
+      <select class="requered applicant applicant_form" name="applicant">
+        <option value=""></option>
+        <option value="1">В разработке</option>
+        <option value="2">В разработке1</option>
+        <option value="3">В разработке2</option>
+      </select><br>
+      <p class="variable_data">-</p>
+      <p class="variable_data">+X(XXX)-XXX-XX-XX</p>
+      <input class="requered cabinet applicant_form" type="number" name="cabinet" maxlength="3"><br>
+      <input class="requered location applicant_form" type="text" name="building">
+    </div>
+  </div>
+</div>
+<div class="category-container request-info">
+  <div class="title-div">
+    <p class="title" id="request_form_title">Тип заявки</p>
+  </div>
+  <div class="category_div" id="request_form">
+    <div class="category_left_side_div">
+      <p class="variable_name" id="request_from2">Способ обращения:</p>
+      <p class="variable_name" id="request_type12">Тип заявки:</p>
+    </div>
+    <div class="category_right_side_div">
+      <select class="requered request_from request_form" name="request_from">
+        <option value=""></option>
+        <option value="">В разработке</option>
+      </select><br>
+      <select class="requered request_type1 request_form" name="request_type1" se>
+        <option value=""></option>
+        <option value="">В разработке</option>
+      </select><br>
+    </div>
+  </div>
+</div><br>
+<div class="category-container request">
+  <div class="title-div">
+    <p class="title" id="request_form2_title">Заявление</p>
+  </div>
+  <div class="category_div" id="request_form2">
+    <div class="category_left_side_div">
+      <p class="variable_name" id="request_type22">Тип заявления:</p>
+      <p class="variable_name">Приоритет:</p>
+      <p class="variable_name" id="request_description2">Описание:</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name">Вложения:</p>
+    </div>
+    <div class="category_right_side_div">
+      <select class="requered request_type2 request_form2" name="request_type2">
+        <option value=""></option>
+        <option value="">В разработке</option>
+      </select><br>
+      <select class="discret request_priority" name="request_priority">
+        <option value=""></option>
+        <option value="">В разработке</option>
+      </select><br>
+      <textarea class="requered request_description request_form2" name="request_description" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>
+      <input class="discret applicant_file file" type="file" name="request_additions">
+    </div>
+  </div>
+</div>

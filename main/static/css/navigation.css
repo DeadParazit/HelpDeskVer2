@@ -51,4 +51,12 @@
 .link{
   color:#eee;
   text-decoration: none;
+  border: 0;
+  background-color: #444;
+}
+.link_div:hover .link{
+  background-color: #888;
+}
+.link:{
+  border:0;
 }

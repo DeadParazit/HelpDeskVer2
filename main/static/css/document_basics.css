@@ -1,6 +1,7 @@
 .category-container{
   display: inline-block;
   vertical-align: top;
+  position: relative;
 }
 .category_div{
   padding: 10px;
@@ -42,6 +43,10 @@ select.variable-input{
 .hidden_text{
   color:#eee;
 }
+.hidden_text::selection {
+  color: #eee;
+  background: none;
+}
 .content .red{
   color: #f00;
 }
@@ -68,4 +73,7 @@ input[type="file"]{
 }
 input[type="checkbox"]{
   height:13px;
+}
+.hidden{
+  display: none;
 }

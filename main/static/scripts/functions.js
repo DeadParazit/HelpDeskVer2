@@ -1,20 +1,20 @@
 function applyHoverActions(){
-    $('.option').unbind('hover');
-    $('.option').hover(function() {
-      $('.'+$(this).attr("id")).css({'background-color': '#888','color':'#eee'});
-      $('.'+$(this).attr("id")).first().css('box-shadow','0 0 10px #fff inset');
-    }, function() {
-      $('.'+$(this).attr("id")).css({'background-color': '','color':''});
-      $('.'+$(this).attr("id")).first().css('box-shadow','');
-    });
-    $('.multiple_options_name').unbind('hover');
-    $('.multiple_options_name').hover(function() {
-      $('.'+$(this).attr("id")).css({'background-color': '#888','color':'#eee'});
-      $('.'+$(this).attr("id")).first().css('box-shadow','0 0 10px #fff inset');
-    }, function() {
-      $('.'+$(this).attr("id")).css({'background-color': '','color':''});
-      $('.'+$(this).attr("id")).first().css('box-shadow','');
-    });
+    // $('.option').unbind('hover');
+    // $('.option').hover(function() {
+    //   $('.'+$(this).attr("id")).css({'background-color': '#888','color':'#eee'});
+    //   $('.'+$(this).attr("id")).first().css('box-shadow','0 0 10px #fff inset');
+    // }, function() {
+    //   $('.'+$(this).attr("id")).css({'background-color': '','color':''});
+    //   $('.'+$(this).attr("id")).first().css('box-shadow','');
+    // });
+    // $('.multiple_options_name').unbind('hover');
+    // $('.multiple_options_name').hover(function() {
+    //   $('.'+$(this).attr("id")).css({'background-color': '#888','color':'#eee'});
+    //   $('.'+$(this).attr("id")).first().css('box-shadow','0 0 10px #fff inset');
+    // }, function() {
+    //   $('.'+$(this).attr("id")).css({'background-color': '','color':''});
+    //   $('.'+$(this).attr("id")).first().css('box-shadow','');
+    // });
     $('.col').unbind('hover');
     $('.col').hover(function() {
       $(this).css('box-shadow','0 0 10px #fff inset');
