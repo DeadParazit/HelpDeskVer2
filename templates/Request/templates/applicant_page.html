@@ -5,12 +5,14 @@
 <script src="{% static "scripts/select2-develop/dist/js/select2.min.js" %} "></script>
 <script src="{% static "scripts/functions2.js" %} "></script>
 <script type="text/javascript">
-  applyInputLimits();
-  applyInputRequerments();
-  applyClickSelection();
-  $("select").select2({
-    placeholder: "Select a state"
-  });
+    $(document).ready(function(){
+        applyInputLimits();
+        applyInputRequerments();
+        applyClickSelection();
+        $("select").select2({
+            placeholder: "Select a state"
+        });
+    });
 </script>
 <div class="category-container main-info">
   <div class="title-div">
