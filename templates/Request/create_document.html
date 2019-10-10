@@ -105,7 +105,8 @@
           </div>
         </div>
         <div class="content" id="content">
-          <form action="create_document" id="document_form">
+          <form action="create_document/" id="document_form" method="post">
+            {% csrf_token %}
             <div id="applicant_page" style="display:block;overflow:scroll;height:100%">
                 {% include "Request/templates/applicant_page.html" %}
             </div>

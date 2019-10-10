@@ -1,13 +1,13 @@
-<!DOCTYPE html>
 {% load static %}
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <title>Document Page</title>
-    <link rel="stylesheet" href="{% static "css/standart.css" %}">
+    <link rel="stylesheet" href="{% static "css/standart.css" %} ">
     <link rel="stylesheet" href="{% static "css/document_basics.css" %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    <script src="{% static "scripts/toggle_lists.js" %}"></script>
+    <script src="{% static "scripts/toggle_lists.js" %} "></script>
   </head>
   <body>
     <header>
@@ -21,13 +21,46 @@
       </nav>
       <script type="text/javascript">
       $(document).ready(function() {
+        $('#applicant_page').addClass('hidden');
+        $('#performer_page').addClass('hidden');
         $('main').css("height",$( window ).height()-40);
         $('.content').css("width",$( window ).width()-247);
-        $('#applicant_page').css("width",$( window ).width()-247);
         $( window ).resize(function() {
           $('main').css("height",$( window ).height()-40);
           $('.content').css("width",$( window ).width()-247);
-          $('#applicant_page').css("width",$( window ).width()-247);
+        });
+        $('.form1').unbind('click');
+        $('.form1').on('click',function(){
+          $('#applicant_page').removeClass('hidden');
+          $('#list1').removeClass("hidden");
+          $('#performer_page').addClass('hidden');
+          $('#list2').addClass("hidden");
+          $('#applicant_page2').addClass('hidden');
+          $('#list3').addClass("hidden");
+          $('#arrow3').addClass("right");
+          $('#arrow3').removeClass("down");
+        });
+        $('.form2').unbind('click');
+        $('.form2').on('click',function(){
+          $('#applicant_page').addClass('hidden');
+          $('#list1').addClass("hidden");
+          $('#performer_page').removeClass('hidden');
+          $('#list2').removeClass("hidden");
+          $('#applicant_page2').addClass('hidden');
+          $('#list3').addClass("hidden");
+          $('#arrow3').addClass("right");
+          $('#arrow3').removeClass("down");
+        });
+        $('.form3').unbind('click');
+        $('.form3').on('click',function(){
+          $('#applicant_page').addClass('hidden');
+          $('#list1').addClass("hidden");
+          $('#performer_page').addClass('hidden');
+          $('#list2').addClass("hidden");
+          $('#applicant_page2').removeClass('hidden');
+          $('#list3').removeClass("hidden");
+          $('#arrow3').removeClass("right");
+          $('#arrow3').addClass("down");
         });
       });
       </script>
@@ -35,78 +68,26 @@
     <main>
       <div class="relative_map">
         <div class="filter">
-          <div class="multiple_options_name_div" id="1">
-            <i class="arrow right" id="arrow1"></i>
+          <div class="multiple_options_name_div form1" id="1">
             <p class="multiple_options_name" id="total_data_title">Заявлено</p>
           </div>
-          <div class="multiple_options_div total_data_content hidden" id="list1">
-            <div class="multiple_options_name_div" id="11">
-              <i class="arrow right" id="arrow11"></i>
-              <p class="total_data multiple_options_name" id="applicant_data_title">Заявитель</p>
-            </div>
-            <div class="multiple_options_div applicant_data_content hidden" id="list11">
-              <div class="option_div">
-                <p class="applicant1 applicant_data option">Заявитель</p>
-              </div>
-              <div class="option_div">
-                <p class="cabinet1 applicant_data option">Кабинет</p>
-              </div>
-              <div class="option_div">
-                <p class="location1 applicant_data option">Местоположение</p>
-              </div>
-            </div>
-            <div class="multiple_options_name_div" id="12">
-              <i class="arrow right" id="arrow12"></i>
-              <p class="total_data multiple_options_name" id="request_type_title">Тип заявки</p>
-            </div>
-            <div class="multiple_options_div request_type_content hidden" id="list12">
-              <div class="option_div">
-                <p class="request_from1 request_type option">Способ обращения</p>
-              </div>
-              <div class="option_div">
-                <p class="request_type11 request_type option">Тип заявки</p>
-              </div>
-            </div>
-            <div class="multiple_options_name_div" id="13">
-              <i class="arrow right" id="arrow13"></i>
-              <p class="total_data multiple_options_name" id="request_data_title">Заявление</p>
-            </div>
-            <div class="multiple_options_div request_data_content hidden" id="list13">
-              <div class="option_div">
-                <p class="request_type21 request_data option">Тип заявления</p>
-              </div>
-              <div class="option_div">
-                <p class="request_priority1 option">Приоритет</p>
-              </div>
-              <div class="option_div">
-                <p class="request_description1 request_data option">Описание</p>
-              </div>
-              <div class="option_div">
-                <p class="file1 option">Вложения</p>
-              </div>
-            </div>
-            <div class="multiple_options_name_div" id="14">
-              <i class="arrow right" id="arrow14"></i>
-              <p class="total_data multiple_options_name" id="status_data_title">Статус</p>
-            </div>
-            <div class="multiple_options_div status_data_content hidden" id="list14">
-              <div class="option_div">
-                <p class="applicant_notified1 option">Заявитель оповещен</p>
-              </div>
-              <div class="option_div">
-                <p class="performer_notified1 option">Исполнитель оповещен</p>
-              </div>
-              <div class="option_div">
-                <p class="operator_notified1 option">Оператор оповещен</p>
-              </div>
-              <div class="option_div">
-                <p class="status1 status_data option">Смена статуса</p>
-              </div>
-            </div>
+          <div class="multiple_options_div total_data_content hidden form1" id="list1">
+
+          </div>
+          <div class="multiple_options_name_div form2" id="2">
+            <p class="multiple_options_name" id="total_performer_data_title">Исполнение</p>
+          </div>
+          <div class="multiple_options_div total_performer_data_content hidden form2" id="list2">
+
           </div>
         </div>
         <div class="content" id="content">
-            {% include "Request/templates/show_applicant_page1.html" %}
+            <div id="applicant_page">
+                {% include "Request/templates/applicant_page_text.html" %}
+            </div>
+            <div id="performer_page">
+                {% include "Request/templates/performer_page_text.html" %}
+            </div>
         </div>
       </div>
     </main>

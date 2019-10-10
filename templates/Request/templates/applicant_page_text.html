@@ -22,8 +22,8 @@
       <p class="variable_name">Автор:</p>
     </div>
     <div class="category_right_side_div">
-      <p class="variable_data">-</p>
-      <p class="variable_data">-</p>
+      <p class="variable_data">{{ specific_request.pk }}</p>
+      <p class="variable_data">{{ specific_request.date }}</p>
       <p class="variable_data">-</p>
     </div>
   </div>
@@ -35,29 +35,32 @@
   <div class="category_div" id="status_form">
     <div class="category_left_side_div">
       <p class="variable_name">Оповещения:</p>
-      <!-- if оповещения > 1 -->
-      <p class="variable_name hidden_text" >-</p>
-      <!-- endif -->
-      <!-- if опвещения > 2 -->
-      <p class="variable_name hidden_text">-</p>
-      <!-- endif -->
+        {% if notified == 2 %}
+            <p class="variable_name hidden_text" >-</p>
+        {% endif %}
+        {% if notified == 3 %}
+            <p class="variable_name hidden_text" >-</p>
+            <p class="variable_name hidden_text" >-</p>
+        {% endif %}
       <p class="variable_name" id="status2">Статус:</p>
-      <p class="variable_name hidden_text">-</p>
+        {% if specific_request.storage == True %}
+             <p class="variable_name hidden_text">-</p>
+        {% endif %}
     </div>
     <div class="category_right_side_div">
-      <!-- if -->
-      <p class="variable_data ">Заявитель оповещен</p>
-      <!-- endif -->
-      <!-- if -->
-      <p class="variable_data ">Исполнитель оповещен</p>
-      <!-- endif -->
-      <!-- if -->
-      <p class="variable_data ">Оператор оповещен</p>
-      <!-- endif -->
-      <p class="variable_data ">-<!-- текущий статус -->-</p>
-      <!-- if -->
-      <p class="variable_data ">Требуется отметка со склада</p>
-      <!-- endif -->
+        {% if specific_request.applicant_is_notified == True %}
+             <p class="variable_data ">Заявитель оповещен</p>
+        {% endif %}
+        {% if specific_request.performer_is_notified == True %}
+             <p class="variable_data ">Исполнитель оповещен</p>
+        {% endif %}
+        {% if specific_request.operator_is_notified == True %}
+             <p class="variable_data ">Оператор оповещен</p>
+        {% endif %}
+        <p class="variable_data ">{{ specific_request.status }}</p>
+        {% if specific_request.storage == True %}
+             <p class="variable_data ">Требуется отметка со склада</p>
+        {% endif %}
     </div>
   </div>
 </div>
@@ -75,11 +78,11 @@
       <p class="variable_name" id="location2">Местоположение:</p>
     </div>
     <div class="category_right_side_div">
-      <p class="variable_data">-</p>
-      <p class="variable_data">-</p>
-      <p class="variable_data">-</p>
-      <p class="variable_data">-</p>
-      <p class="variable_data">-</p>
+      <p class="variable_data">{{ specific_request.applicant }}</p>
+      <p class="variable_data">{{ specific_request.applicant.department.name }}</p>
+      <p class="variable_data">{{ specific_request.applicant.phone }}</p>
+      <p class="variable_data">{{ specific_request.room }}</p>
+      <p class="variable_data">{{ specific_request.building }}</p>
     </div>
   </div>
 </div>
@@ -93,8 +96,8 @@
       <p class="variable_name" id="request_type12">Тип заявки:</p>
     </div>
     <div class="category_right_side_div">
-      <p class="variable_data">-</p>
-      <p class="variable_data">-</p>
+      <p class="variable_data">{{ specific_request.way_to_treat }}</p>
+      <p class="variable_data">{{ specific_request.type_of_request }}</p>
     </div>
   </div>
 </div><br>
@@ -109,9 +112,9 @@
       <p class="variable_name" id="request_description2">Описание и вложения:</p>
     </div>
     <div class="category_right_side_div" style="vertical-align:top">
-      <p class="variable_data">-</p>
-      <p class="variable_data">-</p>
-      <p class="variable_data" style="overflow:auto;max-width:300px">-</p>
+      <p class="variable_data">{{ specific_request.type.name }}</p>
+      <p class="variable_data">{{ specific_request.priority }}</p>
+      <p class="variable_data" style="overflow:auto;max-width:300px">{{ specific_request.description }}</p>
       <img style="width:125px;height:125px;padding:10px;display:inline-block;"><!-- картинки в таком формате -->
     </div>
   </div>

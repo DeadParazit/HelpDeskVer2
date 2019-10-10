@@ -115,7 +115,8 @@
           </div>
         </div>
         <div class="content" id="content">
-          <form action="update_performer" id="document_form">
+          <form action="update_performer/" id="document_form" method="post">
+            {% csrf_token %}
             <div id="applicant_page">
                 {% include "Request/templates/applicant_page_text.html" %}
             </div>

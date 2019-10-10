@@ -4,12 +4,14 @@
 <script src="{% static "scripts/select2-develop/dist/js/select2.min.js" %} "></script>
 <script src="{% static "scripts/functions2.js" %} "></script>
 <script type="text/javascript">
-  applyInputLimits();
-  applyInputRequerments();
-  applyClickSelection();
-  $("select").select2({
-    placeholder: "Select a state"
-  });
+  $(document).ready(function () {
+      applyInputLimits();
+      applyInputRequerments();
+      applyClickSelection();
+      $("select").select2({
+        placeholder: "Select a state"
+      });
+  })
 </script>
 <div class="category-container performer_data_container">
   <div class="title-div">
@@ -17,38 +19,15 @@
   </div>
   <div class="category_div" id="performer_data_form">
     <div class="category_left_side_div">
-      <p class="variable_name">Исполнитель:</p>
-      <p class="variable_name">Телефон:</p>
       <p class="variable_name" id="performer2">Смена исполнителя:</p>
       <p class="variable_name hidden_text exsc hidden">-</p>
       <p class="variable_name">Статус:</p>
       <p class="variable_name" id="new_status2">Смена статуса:</p>
     </div>
     <div class="category_right_side_div">
-      <p class="variable_data">-</p>
-      <p class="variable_data">+X(XXX)-XXX-XX-XX</p>
-      <select class="discret performer performer_data_form" name="performer">
-        <option value=""></option>
-        <option value="1">В разработке</option>
-        <option value="2">В разработке1</option>
-        <option value="3">В разработке2</option>
-      </select><br>
-      <script type="text/javascript">
-        $('.performer').on('change',function(){
-          if($(this).val()!=""){
-            $('.exsc').removeClass('hidden');
-            $('.exsc_inl').addClass('display_inline');
-          }
-        });
-      </script>
-      <input class="variable-input checkbox exsc hidden" type="checkbox" name="exscalation" value="true"><p class="variable_data hidden exsc exsc_inl">Эскалация</p><br class="exsc hidden">
-      <p class="variable_data">-</p>
-      <select class="discret new_status performer_data_form" name="new_status">
-        <option value=""></option>
-        <option value="1">В разработке</option>
-        <option value="2">В разработке1</option>
-        <option value="3">В разработке2</option>
-      </select><br>
+      {{ form.performer }}<br>
+      <p class="variable_data">{{ specific_request.status }}</p>
+      {{ form.status }}<br>
     </div>
   </div>
 </div><br>
@@ -65,96 +44,63 @@
       <p class="variable_name hidden_text">-</p>
       <p class="variable_name hidden_text">-</p>
       <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
       <p class="variable_name ">Код закрытия:</p>
       <p class="variable_name hidden_text unfinished hidden">-</p>
       <p class="variable_name ">Сложность:</p>
       <p class="variable_name ">Вложения:</p>
     </div>
     <div class="category_right_side_div">
-      <input class="variable-input checkbox materials_usage_check" type="checkbox" name="materials_usage" value="true"><p class="variable_data display_inline">Расход материалов</p>
-      <script type="text/javascript">
-        $('.materials_usage_check').on('change',function(){
-          if($(this).prop('checked')==true){
-            $('.materials').removeClass('hidden');
-            $("#23").removeClass('hidden');
-          }
-          else{
-            $('.materials').addClass('hidden');
-            $("#23").addClass('hidden');
-            $("#list23").addClass('hidden');
-            $("#arrow23").addClass('right');
-            $("#arrow23").removeClass('down');
-          }
-        });
-      </script>
-      <input class="variable-input checkbox date_exp_check" type="checkbox" name="date_exp" value="true"><p class="variable_data display_inline">Перенос сроков</p><br>
-      <script type="text/javascript">
-        $('.date_exp_check').on('change',function(){
-          if($(this).prop('checked')==true){
-            $('.date_exp').removeClass('hidden');
-            $('.date_exp1').parent().removeClass('hidden');
-          }
-          else{
-            $('.date_exp').addClass('hidden');
-            $('.date_exp1').parent().addClass('hidden');
-          }
-        });
-      </script>
-      <input type="date" name="date_exp_value" class=" variable-input hidden date_exp"><br class="date_exp hidden">
-      <textarea class="discret progress_description preformer_progress_form" name="request_progress" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>
-      <select class="discret exit_code performer_progress_form" name="exit_code">
-        <option value=""></option>
-        <option value="1">В разработке</option>
-        <option value="2">В разработке1</option>
-        <option value="3">В разработке2</option>
-      </select><br>
-      <script type="text/javascript">
-        $('.exit_code').on('change',function(){
-          if($(this).val()=='3'){
-            $('.unfinished').removeClass('hidden');
-            $('.unfinished_inl').addClass('display_inline');
-          }
-          else{
-            $('.unfinished').addClass('hidden');
-            $('.unfinished_inl').removeClass('display_inline');
-          }
-        });
-      </script>
-      <input class="variable-input checkbox unfinished hidden" type="checkbox" name="unfinished" value="true"><p class="variable_data hidden unfinished unfinished_inl">Проблема открыта:</p><br class="unfinished hidden">
-      <select class="discret complexity performer_progress_form" name="complexity">
-        <option value=""></option>
-        <option value="1">В разработке</option>
-        <option value="2">В разработке1</option>
-        <option value="3">В разработке2</option>
-      </select><br>
-      <input class="discret performer_file performer_progress_form file" type="file" name="progress_additions">
+      <input class="variable-input checkbox materials_usage_check" id="materials_usage" type="checkbox" name="materials_usage" value="true"><p class="variable_data display_inline">Расход материалов</p>
+
+        <script type="text/javascript">
+            $('#materials_usage').on('change', function () {
+                if (document.getElementById('materials_usage').checked) {
+                    $.ajax(
+                    {
+                        type: "GET",
+                        url: "{% url 'request:show_performer_storage_ajax' %}",
+                        success: function (data) {
+                           $('#storage_ajax').html(data);
+                           $("#storage_type").select2({
+                            placeholder: "Select a state"
+                          });
+                        }
+                    })
+                } else {
+                    $('#storage_ajax').html('');
+                }
+            });
+        </script>
+      <input class="variable-input checkbox date_exp_check" id="change_date" type="checkbox" name="date_exp" value="true"><p class="variable_data display_inline">Перенос сроков</p><br>
+
+        <script type="text/javascript">
+            $('#change_date').on('change', function () {
+                if (document.getElementById('change_date').checked) {
+                    $.ajax(
+                    {
+                        type: "GET",
+                        url: "{% url 'request:show_performer_date_ajax' %}",
+                        success: function (data) {
+                           $('#deadline_ajax').html(data);
+                           $('.date_exp').removeClass('hidden')
+                        }
+                    })
+                } else {
+                    $('#deadline_ajax').html('');
+                    $('.date_exp').addClass('hidden')
+                }
+            });
+        </script>
+
+        <div id="deadline_ajax">
+        </div>
+      {{ form.performer_comment }}<br>
+      {{ form.exit_code }}<br>
+        {{ form.complexity }}<br>
+        {{ form.performer_file }}
     </div>
   </div>
 </div>
-<div class="category-container materials hidden">
-  <div class="title-div materials hidden">
-    <p class="title" id="materials_usage_form_title">Исполнение</p>
-  </div>
-  <div class="category_div materials hidden" id="materials_usage_form">
-    <div class="category_left_side_div" style="vertical-align:top">
-      <p class="variable_name ">Расход материалов:</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-      <p class="variable_name hidden_text">-</p>
-    </div>
-    <div class="category_right_side_div">
-      <textarea class="discret materials_usage_description materials_usage_form" name="" rows="9" cols="65" style="resize:none;height:158px"></textarea><br>
-      <select class="discret storage_type materials_usage_form" name="storage_type">
-        <option value=""></option>
-        <option value="1">В разработке</option>
-        <option value="2">В разработке1</option>
-        <option value="3">В разработке2</option>
-      </select>
-      <input class="variable-input checkbox materials_usage_new" type="checkbox" name="materials_usage_new" value="true"><p class="variable_data display_inline">Новый</p><br>
-    </div>
-  </div>
+<div class="category-container materials" id="storage_ajax">
+
 </div>

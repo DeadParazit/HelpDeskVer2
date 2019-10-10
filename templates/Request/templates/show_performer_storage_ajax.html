@@ -1,0 +1,19 @@
+  <div class="title-div materials">
+    <p class="title" id="materials_usage_form_title">Расход материалов</p>
+  </div>
+  <div class="category_div materials" id="materials_usage_form">
+    <div class="category_left_side_div" style="vertical-align:top">
+      <p class="variable_name ">Расход материалов:</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name hidden_text">-</p>
+      <p class="variable_name ">тип</p>
+      <p class="variable_name ">is new</p>
+    </div>
+    <div class="category_right_side_div">
+        {{ form.materials_usage_comment }}<br>
+        {{ form.storage_type }}<br>
+        {{ form.is_new }}
+    </div>
+  </div>
